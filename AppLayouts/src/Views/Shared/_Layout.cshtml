@@ -9,7 +9,27 @@
 </head>
 
 <body>
-  @RenderBody() @RenderSection("scripts", required: false)
+  <mdl-drawer-panel id="drawerPanel">
+
+    <div class="nav" drawer>
+      <!-- Nav Content -->
+    </div>
+
+    <mdl-header-panel class="main" main mode="waterfall">
+      <!-- Main Toolbar -->
+      <mdl-toolbar>
+        <mdl-icon-button icon="menu" mdl-drawer-toggle></mdl-icon-button>
+      </mdl-toolbar>
+
+      <!-- Main Content -->
+      <div class="content">
+        @RenderBody()
+      </div>
+
+    </mdl-header-panel>
+
+  </mdl-drawer-panel>
+  @RenderSection("scripts", required: false)
 </body>
 
 </html>
