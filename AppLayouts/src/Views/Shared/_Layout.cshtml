@@ -5,31 +5,67 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@ViewData["Title"] - AppLayouts</title>
+  <!-- Page styles -->
+    <environment names="Development">
+        <link href='//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        <link rel="stylesheet" href="~/lib/material-design-lite/material.css">
+        <link rel="stylesheet" href="~/css/site.css">
+    </environment>
+    <environment names="Staging,Production">
+        <link href='//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.css" asp-fallback-href="~/lib/material-design-lite/material.min.css" asp-fallback-test-class="hidden" asp-fallback-test-property="visibility" asp-fallback-test-value="hidden" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    </environment>
   @RenderSection("styles", required: false)
 </head>
 
 <body>
-  <mdl-drawer-panel id="drawerPanel">
-
-    <div class="nav" drawer>
-      <!-- Nav Content -->
-    </div>
-
-    <mdl-header-panel class="main" main mode="waterfall">
-      <!-- Main Toolbar -->
-      <mdl-toolbar>
-        <mdl-icon-button icon="menu" mdl-drawer-toggle></mdl-icon-button>
-      </mdl-toolbar>
-
-      <!-- Main Content -->
-      <div class="content">
-        @RenderBody()
+<!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Title</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
       </div>
-
-    </mdl-header-panel>
-
-  </mdl-drawer-panel>
-  @RenderSection("scripts", required: false)
+      <main class="mdl-layout__content">
+        <div class="page-content">
+            <!-- Your content goes here -->
+            @RenderBody()
+        </div>
+      </main>
+    </div>
+    <environment names="Development">
+        <script src="~/material-design-lite/material.js"></script>
+        <script src="~/js/site.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js" asp-fallback-src="~/material-design-lite/material.min.js" asp-fallback-test="window.MaterialButton"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>
